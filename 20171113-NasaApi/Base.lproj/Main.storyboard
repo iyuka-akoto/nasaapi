@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="r9w-zv-vEa" kind="show" id="wWu-X6-wBt"/>
+                                    <segue destination="r9w-zv-vEa" kind="show" identifier="ApodSelectDate" id="wWu-X6-wBt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -49,7 +49,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Show"/>
                                 <connections>
-                                    <segue destination="bNb-BX-KJb" kind="show" id="1Rg-Tg-Uch"/>
+                                    <segue destination="bNb-BX-KJb" kind="show" identifier="ApodShowResult" id="1Rg-Tg-Uch"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wiL-CW-vR2">

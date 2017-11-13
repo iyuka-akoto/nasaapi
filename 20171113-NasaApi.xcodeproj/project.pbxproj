@@ -14,6 +14,8 @@
 		5E635E3D1FB9EBC300588AAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E635E3B1FB9EBC300588AAE /* LaunchScreen.storyboard */; };
 		5E635E481FB9EBC300588AAE /* _0171113_NasaApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E635E471FB9EBC300588AAE /* _0171113_NasaApiTests.swift */; };
 		5E635E531FB9EBC400588AAE /* _0171113_NasaApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E635E521FB9EBC400588AAE /* _0171113_NasaApiUITests.swift */; };
+		5EA3DFF81FB9F003008EB82C /* ApodSelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3DFF71FB9F003008EB82C /* ApodSelectDateViewController.swift */; };
+		5EA3DFFA1FB9F016008EB82C /* ApodShowResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA3DFF91FB9F016008EB82C /* ApodShowResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		5E635E4E1FB9EBC400588AAE /* 20171113-NasaApiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "20171113-NasaApiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E635E521FB9EBC400588AAE /* _0171113_NasaApiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0171113_NasaApiUITests.swift; sourceTree = "<group>"; };
 		5E635E541FB9EBC400588AAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EA3DFF71FB9F003008EB82C /* ApodSelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodSelectDateViewController.swift; sourceTree = "<group>"; };
+		5EA3DFF91FB9F016008EB82C /* ApodShowResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApodShowResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				5E635E321FB9EBC300588AAE /* AppDelegate.swift */,
 				5E635E341FB9EBC300588AAE /* ViewController.swift */,
 				5E635E361FB9EBC300588AAE /* Main.storyboard */,
+				5EA3DFF71FB9F003008EB82C /* ApodSelectDateViewController.swift */,
+				5EA3DFF91FB9F016008EB82C /* ApodShowResultViewController.swift */,
 				5E635E391FB9EBC300588AAE /* Assets.xcassets */,
 				5E635E3B1FB9EBC300588AAE /* LaunchScreen.storyboard */,
 				5E635E3E1FB9EBC300588AAE /* Info.plist */,
@@ -259,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA3DFFA1FB9F016008EB82C /* ApodShowResultViewController.swift in Sources */,
 				5E635E351FB9EBC300588AAE /* ViewController.swift in Sources */,
 				5E635E331FB9EBC300588AAE /* AppDelegate.swift in Sources */,
+				5EA3DFF81FB9F003008EB82C /* ApodSelectDateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
