@@ -10,6 +10,8 @@ import UIKit
 
 class ApodShowResultViewController: UIViewController {
 
+    var selectedDate: String = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

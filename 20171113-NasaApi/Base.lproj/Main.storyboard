@@ -39,7 +39,7 @@
         <!--Select Date-->
         <scene sceneID="LF8-5o-2J6">
             <objects>
-                <viewController title="Select Date" id="r9w-zv-vEa" sceneMemberID="viewController">
+                <viewController title="Select Date" id="r9w-zv-vEa" customClass="ApodSelectDateViewController" customModule="_0171113_NasaApi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XNf-oM-Dta">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,6 +72,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0dy-xa-ccX"/>
                     </view>
+                    <connections>
+                        <outlet property="selectDate" destination="wiL-CW-vR2" id="Ufn-ir-M0C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZU-xK-Eei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,7 +83,7 @@
         <!--Astronomy Picture-->
         <scene sceneID="V3t-C9-94S">
             <objects>
-                <viewController title="Astronomy Picture" id="bNb-BX-KJb" sceneMemberID="viewController">
+                <viewController title="Astronomy Picture" id="bNb-BX-KJb" customClass="ApodShowResultViewController" customModule="_0171113_NasaApi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZZR-51-4nL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
