@@ -12,6 +12,10 @@ class ApodShowResultViewController: UIViewController {
 
     var selectedDate: String = String()
     
+    @IBOutlet weak var astronomyImageView: UIImageView!
+    @IBOutlet weak var explanationTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

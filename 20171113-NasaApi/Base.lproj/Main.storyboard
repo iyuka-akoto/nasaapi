@@ -109,6 +109,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R1f-oe-HRL"/>
                     </view>
+                    <connections>
+                        <outlet property="astronomyImageView" destination="gzP-WU-nE0" id="7RG-eM-5dm"/>
+                        <outlet property="explanationTableView" destination="MJM-mn-6Xc" id="M0a-47-ctU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="59t-lp-wwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
