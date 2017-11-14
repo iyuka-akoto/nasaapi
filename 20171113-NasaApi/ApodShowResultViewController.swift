@@ -17,6 +17,7 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var astronomyImageView: UIImageView!
     @IBOutlet weak var explanationTableView: UITableView!
+    @IBOutlet weak var activityImageView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,10 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
         explanationTableView.register(UITableViewCell.self, forCellReuseIdentifier: "explanationTableViewCell")
         explanationTableView.estimatedRowHeight = 20
         explanationTableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Start ActivityIndicatorView
+        self.activityImageView.hidesWhenStopped = true
+        self.activityImageView.startAnimating()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,6 +131,7 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
                 print(error ?? "Error fetchImage")
             }
             DispatchQueue.main.async(execute: {() -> Void in
+                self.activityImageView.stopAnimating()
                 self.showAstronomyImageView()
             })
         })
