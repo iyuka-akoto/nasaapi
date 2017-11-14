@@ -51,6 +51,13 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func createJsonUrl() -> String {
+        var url:String = "https://api.nasa.gov/planetary/apod"
+        url += "?date=" + self.selectedDate
+        url += "?api_key=" + readApiKey(keyName: "nasapi")!
+        return url
+    }
+    
     func fetchJson(urlString: String) -> Void {
         let url = URL(string: urlString)
         let task = URLSession.shared.dataTask(with: url!, completionHandler: { data, response, error in
