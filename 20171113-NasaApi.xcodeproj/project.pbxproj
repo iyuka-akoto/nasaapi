@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E28EBAD1FBA837700A05BDD /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E28EBAC1FBA837700A05BDD /* ApiKey.swift */; };
+		5E28EBB31FBA854300A05BDD /* SecretApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E28EBB21FBA854300A05BDD /* SecretApiKey.swift */; };
 		5E635E331FB9EBC300588AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E635E321FB9EBC300588AAE /* AppDelegate.swift */; };
 		5E635E351FB9EBC300588AAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E635E341FB9EBC300588AAE /* ViewController.swift */; };
 		5E635E381FB9EBC300588AAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E635E361FB9EBC300588AAE /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E28EBAC1FBA837700A05BDD /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		5E28EBB21FBA854300A05BDD /* SecretApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretApiKey.swift; sourceTree = "<group>"; };
 		5E635E2F1FB9EBC300588AAE /* 20171113-NasaApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "20171113-NasaApi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E635E321FB9EBC300588AAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E635E341FB9EBC300588AAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				5E635E361FB9EBC300588AAE /* Main.storyboard */,
 				5EA3DFF71FB9F003008EB82C /* ApodSelectDateViewController.swift */,
 				5EA3DFF91FB9F016008EB82C /* ApodShowResultViewController.swift */,
+				5E28EBAC1FBA837700A05BDD /* ApiKey.swift */,
+				5E28EBB21FBA854300A05BDD /* SecretApiKey.swift */,
 				5E635E391FB9EBC300588AAE /* Assets.xcassets */,
 				5E635E3B1FB9EBC300588AAE /* LaunchScreen.storyboard */,
 				5E635E3E1FB9EBC300588AAE /* Info.plist */,
@@ -265,9 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E28EBAD1FBA837700A05BDD /* ApiKey.swift in Sources */,
 				5EA3DFFA1FB9F016008EB82C /* ApodShowResultViewController.swift in Sources */,
 				5E635E351FB9EBC300588AAE /* ViewController.swift in Sources */,
 				5E635E331FB9EBC300588AAE /* AppDelegate.swift in Sources */,
+				5E28EBB31FBA854300A05BDD /* SecretApiKey.swift in Sources */,
 				5EA3DFF81FB9F003008EB82C /* ApodSelectDateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
