@@ -26,9 +26,10 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
         guard let url = createJsonUrl() else {
             return
         }
+        print("before fetch")
+        fetchJson(urlString: url)
+        print("after fetch")
         
-        print(selectedDate)
-        print(url)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +64,7 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
             print("Error:createJsonUrl readApiKey not found")
             return nil
         }
-        url += "?api_key=" + apiKey
+        url += "&api_key=" + apiKey
         return url
     }
     
@@ -73,9 +74,11 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
             if let data = data, let response = response {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
+                    print("JSONSerialization")
                     for(key, value) in json {
                         self.jsonData[key] = value
                     }
+                    print(self.jsonData)
                 } catch {
                     print("Error: Serialize")
                 }
