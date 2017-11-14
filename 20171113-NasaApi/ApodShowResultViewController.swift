@@ -8,18 +8,22 @@
 
 import UIKit
 
-class ApodShowResultViewController: UIViewController {
+class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    
 
     var selectedDate: String = String()
     
     @IBOutlet weak var astronomyImageView: UIImageView!
     @IBOutlet weak var explanationTableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        initUI()
+        
+        print(selectedDate)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +31,43 @@ class ApodShowResultViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func initUI() -> Void {
+        // TableView初期設定
+        explanationTableView.dataSource = self
+        explanationTableView.delegate = self
+        explanationTableView.register(UITableViewCell.self, forCellReuseIdentifier: "explanationTableViewCell")
+        explanationTableView.estimatedRowHeight = 20
+        explanationTableView.rowHeight = UITableViewAutomaticDimension
+    }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = explanationTableView.dequeueReusableCell(withIdentifier: "explanationTableViewCell", for: indexPath as IndexPath)
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = "A"
+        return cell
+    }
+    
+    func fetchJson(urlString: String) -> Void {
+        let url = URL(string: urlString)
+        let task = URLSession.shared.dataTask(with: url!, completionHandler: { data, response, error in
+            if let data = data, let response = response {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
+                    
+                } catch {
+                    print("Error: Serialize")
+                }
+            } else {
+                print(error ?? "Error")
+            }
+        })
+        task.resume()
+    }
+    
     /*
     // MARK: - Navigation
 
