@@ -13,6 +13,7 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
     
 
     var selectedDate: String = String()
+    var jsonData: Dictionary = [String: Any]()
     
     @IBOutlet weak var astronomyImageView: UIImageView!
     @IBOutlet weak var explanationTableView: UITableView!
@@ -22,8 +23,12 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
 
         // Do any additional setup after loading the view.
         initUI()
+        guard let url = createJsonUrl() else {
+            return
+        }
         
         print(selectedDate)
+        print(url)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,10 +56,14 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
-    func createJsonUrl() -> String {
+    func createJsonUrl() -> String? {
         var url:String = "https://api.nasa.gov/planetary/apod"
         url += "?date=" + self.selectedDate
-        url += "?api_key=" + readApiKey(keyName: "nasapi")!
+        guard let apiKey = readApiKey(keyName: "nasaapi") else {
+            print("Error:createJsonUrl readApiKey not found")
+            return nil
+        }
+        url += "?api_key=" + apiKey
         return url
     }
     
@@ -64,7 +73,9 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
             if let data = data, let response = response {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
-                    
+                    for(key, value) in json {
+                        self.jsonData[key] = value
+                    }
                 } catch {
                     print("Error: Serialize")
                 }
