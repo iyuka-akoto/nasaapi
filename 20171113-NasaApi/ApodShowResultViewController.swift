@@ -10,10 +10,9 @@ import UIKit
 
 class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-
     var selectedDate: String = String()
     var jsonData: Dictionary = [String: Any]()
+    var astronomyImageData: UIImage = UIImage()
     
     @IBOutlet weak var astronomyImageView: UIImageView!
     @IBOutlet weak var explanationTableView: UITableView!
@@ -69,7 +68,16 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func fetchJson(urlString: String) -> Void {
+        print("start fetchJson")
         let url = URL(string: urlString)
+/*
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        let fetchTask = session.downloadTask(with: url!)
+        print("before resume")
+        fetchTask.resume()
+        print("after resume")
+*/
         let task = URLSession.shared.dataTask(with: url!, completionHandler: { data, response, error in
             if let data = data, let response = response {
                 do {
@@ -79,6 +87,8 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
                         self.jsonData[key] = value
                     }
                     print(self.jsonData)
+
+                    self.fetchImage(urlString: (self.jsonData["url"] as! String))
                 } catch {
                     print("Error: Serialize")
                 }
@@ -89,6 +99,42 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
         task.resume()
     }
     
+    func fetchImage(urlString: String) -> Void {
+        print("start fetchImage")
+        let url = URL(string: urlString)
+        let task = URLSession.shared.dataTask(with: url!, completionHandler: { data, response, error in
+            if let data = data, let response = response {
+                print("finish fetchImage")
+                self.astronomyImageData = UIImage(data:data)!
+            } else {
+                print(error ?? "Error fetchImage")
+            }
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.showAstronomyImageView()
+            })
+        })
+        task.resume()
+    }
+    
+    func showAstronomyImageView() -> Void {
+        self.astronomyImageView.image = self.astronomyImageData
+    }
+    
+    
+
+    /*
+     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+     print("urlSession")
+     
+     }
+     func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+     print("didSendBodyData")
+     }
+     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+     print("didCompleteWithError \(error)")
+     }
+     */
+ 
     /*
     // MARK: - Navigation
 
