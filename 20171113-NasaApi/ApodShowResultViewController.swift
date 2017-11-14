@@ -13,6 +13,7 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
     var selectedDate: String = String()
     var jsonData: Dictionary = [String: Any]()
     var astronomyImageData: UIImage = UIImage()
+    var explanationCellText: [String] = []
     
     @IBOutlet weak var astronomyImageView: UIImageView!
     @IBOutlet weak var explanationTableView: UITableView!
@@ -46,13 +47,13 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.explanationCellText.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = explanationTableView.dequeueReusableCell(withIdentifier: "explanationTableViewCell", for: indexPath as IndexPath)
+        let cell = self.explanationTableView.dequeueReusableCell(withIdentifier: "explanationTableViewCell", for: indexPath as IndexPath)
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.text = "A"
+        cell.textLabel?.text = self.explanationCellText[indexPath.row]
         return cell
     }
     
@@ -87,16 +88,31 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
                         self.jsonData[key] = value
                     }
                     print(self.jsonData)
-
-                    self.fetchImage(urlString: (self.jsonData["url"] as! String))
                 } catch {
                     print("Error: Serialize")
                 }
             } else {
                 print(error ?? "Error")
             }
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.replaceJsonToTableView()
+                self.fetchImage(urlString: (self.jsonData["url"] as! String))
+            })
         })
         task.resume()
+    }
+    
+    func replaceJsonToTableView() -> Void {
+        if let title = self.jsonData["title"] {
+            self.explanationCellText.append("Title\n" + (title as! String))
+        }
+        if let explanation = self.jsonData["explanation"] {
+            self.explanationCellText.append("Explanation\n" + (explanation as! String))
+        }
+        if let copyright = self.jsonData["copyright"] {
+            self.explanationCellText.append("Copyright\n" + (copyright as! String))
+        }
+        self.explanationTableView.reloadData()
     }
     
     func fetchImage(urlString: String) -> Void {
