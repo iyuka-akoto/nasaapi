@@ -101,7 +101,18 @@ class ApodShowResultViewController: UIViewController, UITableViewDelegate, UITab
             }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.replaceJsonToTableView()
-                self.fetchImage(urlString: (self.jsonData["url"] as! String))
+                guard let jsonMediaType = self.jsonData["media_type"] else {
+                    return
+                }
+                let mediaTypeImage = "image"
+                let jsonMediaTypeStr = self.jsonData["media_type"] as! String
+                if jsonMediaTypeStr == mediaTypeImage {
+                    print("image")
+                    self.fetchImage(urlString: (self.jsonData["url"] as! String))
+                } else {
+                    print("not image")
+                }
+
             })
         })
         task.resume()
